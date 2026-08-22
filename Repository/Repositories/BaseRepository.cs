@@ -10,42 +10,39 @@ namespace Repository.Repositories
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
-        protected readonly List<T> _datas;
+        protected readonly AppDbContext _context;
 
-        public BaseRepository(List<T> datas)
+        public BaseRepository(AppDbContext context)
         {
-            _datas = datas;
+            _context = context;
         }
-        
+
         public void Create(T entity)
         {
-            _datas.Add(entity);
+            _context.Set<T>().Add(entity);
+            _context.SaveChanges();
         }
 
         public void Delete(T entity)
         {
-            _datas.Remove(entity);
+            _context.Set<T>().Remove(entity);
+            _context.SaveChanges();
         }
 
         public List<T> GetAll()
         {
-            return _datas;
+            return _context.Set<T>().ToList();
         }
 
         public T GetById(int id)
         {
-            return _datas.FirstOrDefault(m => m.İd == id);
+            return _context.Set<T>().FirstOrDefault(m => m.Id == id);
         }
 
         public void Update(T entity)
         {
-            T existData = GetById(entity.İd);
-
-            if (existData != null)
-            {
-                int index = _datas.IndexOf(existData);
-                _datas[index] = entity;
-            }
+            _context.Set<T>().Update(entity);
+            _context.SaveChanges();
         }
     }
 }

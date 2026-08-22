@@ -12,9 +12,9 @@ namespace Services.Services
     {
         private readonly IEmployeeRepository _context;
 
-        public EmployeeService() : base(new EmployeeRepository())
+        public EmployeeService(IEmployeeRepository employeeRepository) : base(employeeRepository)
         {
-            _context = new EmployeeRepository();
+            _context = employeeRepository;
         }
         public override void Create(Employee employee)
         {

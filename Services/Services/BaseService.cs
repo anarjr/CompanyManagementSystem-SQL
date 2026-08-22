@@ -25,7 +25,7 @@ namespace Services.Services
 
         public virtual void Update(T entity)
         {
-            T existData = GetById(entity.İd);
+            T existData = GetById(entity.Id);
             _context.Update(entity);
         }
 

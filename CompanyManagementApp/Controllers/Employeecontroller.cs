@@ -11,9 +11,9 @@ namespace CompanyManagementApp.Controllers
     {
         private readonly IEmployeeService _employeeService;
 
-        public EmployeeController()
+        public EmployeeController(IEmployeeService employeeService)
         {
-            _employeeService = new EmployeeService();
+            _employeeService = employeeService;
         }
 
         public void Create(Employee employee)

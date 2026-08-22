@@ -9,23 +9,24 @@ namespace Repository.Repositories
 {
     public class DepartmentRepository : BaseRepository<Departament>, IDepartmentRepository
     {
-        public DepartmentRepository() : base(AppDbContext.Departments)
+        public DepartmentRepository(AppDbContext context) : base(context)
         {
 
         }
 
         public List<Departament> Search(string searchText)
         {
-            return AppDbContext.Departments.Where(m => m.Name.Contains(searchText)).ToList();
-                
+            return _context.Departments.Where(m => m.Name.Contains(searchText)).ToList();
+
         }
 
         public List<Departament> SortByCapacity()
         {
-            return AppDbContext.Departments.OrderBy(d => d.Capacity).ToList();
+            return _context.Departments.OrderBy(d => d.Capacity).ToList();
 
 
         }
     }
 }
+
 

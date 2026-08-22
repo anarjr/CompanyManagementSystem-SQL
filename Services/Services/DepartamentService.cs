@@ -12,9 +12,9 @@ namespace Services.Services
     {
         private readonly IDepartmentRepository _departmentRepository;
 
-        public DepartmentService() : base(new DepartmentRepository())
+        public DepartmentService(IDepartmentRepository departmentRepository) : base(departmentRepository)
         {
-            _departmentRepository = new DepartmentRepository();
+            _departmentRepository = departmentRepository;
         }
 
         public List<Departament> Search(string searchText)

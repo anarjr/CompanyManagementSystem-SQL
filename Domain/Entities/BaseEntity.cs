@@ -6,7 +6,7 @@ namespace Domain.Entities
 {
     public abstract class BaseEntity
     {
-        public int İd { get; set; }
+        public int Id { get; set; }
 
     }
 }

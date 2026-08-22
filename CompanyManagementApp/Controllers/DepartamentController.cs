@@ -11,9 +11,9 @@ namespace CompanyManagementApp.Controllers
     {
         private readonly IDepartmentService _departmentService;
 
-        public DepartmentController()
+        public DepartmentController(IDepartmentService departmentService)
         {
-            _departmentService = new DepartmentService();
+            _departmentService = departmentService;
         }
 
 
